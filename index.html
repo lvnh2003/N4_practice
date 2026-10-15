@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#2563eb">
+<title>N4 · 60 ngày</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;700&display=swap">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<a href="#app" class="skip">Bỏ qua tới nội dung</a>
+<header>
+  <a href="#/" class="logo"><span class="mark" aria-hidden="true">N4</span>60 ngày</a>
+  <div class="prog" id="prog" title="Tiến độ lộ trình"><i></i></div>
+  <span id="streak" class="streak" title="Chuỗi ngày học liên tiếp"></span>
+  <button id="furi" class="ic" aria-pressed="true" aria-label="Bật/tắt furigana" title="Bật/tắt furigana">ふ</button>
+</header>
+<main id="app" tabindex="-1"></main>
+<nav aria-label="Điều hướng chính">
+  <a href="#/" data-v="" data-i="cal"><span>Hôm nay</span></a>
+  <a href="#/plan" data-v="plan" data-i="map"><span>Lộ trình</span></a>
+  <a href="#/cards" data-v="cards" data-i="cards"><span>Flashcard</span></a>
+  <a href="#/wrong" data-v="wrong" data-i="alert"><span>Lỗi sai</span></a>
+  <a href="#/stats" data-v="stats" data-i="chart"><span>Thống kê</span></a>
+</nav>
+<div id="toast" role="status" aria-live="polite"></div>
+
+<script>
+// Các file data gọi DAY(ngày, {v:[từ vựng], g:[ngữ pháp], r:[bài đọc]})
+var DATA = {vocab: [], grammar: [], reading: []};
+function DAY(d, o) {
+  (o.v || []).forEach(function (x) { x.day = d; DATA.vocab.push(x); });
+  (o.g || []).forEach(function (x) { x.day = d; DATA.grammar.push(x); });
+  [].concat(o.r || []).forEach(function (x) { x.day = d; DATA.reading.push(x); });
+}
+</script>
+<script src="data/d01-10.js"></script>
+<script src="data/d11-20.js"></script>
+<script src="data/d21-30.js"></script>
+<script src="data/d31-40.js"></script>
+<script src="data/d41-50.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
